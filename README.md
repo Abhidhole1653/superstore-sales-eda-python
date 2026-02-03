@@ -109,3 +109,6 @@ The dataset contains retail transaction records with the following important fie
 - Jupyter Notebook
 
 ---
+👤 Author
+Abhishek Dhole
+Aspiring Data Analyst | Python | SQL | Power BI
