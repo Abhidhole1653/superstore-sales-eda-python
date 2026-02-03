@@ -75,6 +75,3 @@ Visualized trends using Matplotlib for better interpretation of patterns.
 - Jupyter Notebook
 
 ---
-
-## 📁 Project Structure
-
