@@ -1,0 +1,80 @@
+# eda_snippets.py
+
+import pandas as pd
+
+# 1️⃣ Load Dataset
+df = pd.read_csv("Superstore.csv", encoding="latin1")
+
+# 2️⃣ Check Shape
+print("Shape:\n", df.shape)
+
+# 3️⃣ Columns List
+print("\nColumns:\n", df.columns)
+
+# 4️⃣ Data Types
+print("\nData Types:\n", df.dtypes)
+
+# 5️⃣ Missing Values
+print("\nMissing Values:\n", df.isnull().sum())
+
+# 6️⃣ Remove Duplicates
+df.drop_duplicates(inplace=True)
+
+# 7️⃣ Date Cleaning
+df["Order Date"] = pd.to_datetime(df["Order Date"], dayfirst=True, errors="coerce")
+
+# 8️⃣ Create Month Column
+df["Month"] = df["Order Date"].dt.to_period("M")
+
+# 9️⃣ Statistical Summary
+print("\nStatistical Summary:\n", df.describe())
+
+# 🔟 Category-wise Sales
+cat_summary = df.groupby("Category")["Sales"].sum().reset_index()
+print("\nCategory-wise Sales:\n", cat_summary)
+
+# 1️⃣1️⃣ Sub-Category-wise Sales
+subcat_summary = df.groupby("Sub-Category")["Sales"].sum().reset_index()
+print("\nSub-Category-wise Sales:\n", subcat_summary)
+
+# 1️⃣2️⃣ Region-wise Sales
+region_summary = df.groupby("Region")["Sales"].sum().reset_index()
+print("\nRegion-wise Sales:\n", region_summary)
+
+# 1️⃣3️⃣ State-wise Top 10 Sales
+state_summary = (
+    df.groupby("State")["Sales"]
+    .sum()
+    .reset_index()
+    .sort_values(by="Sales", ascending=False)
+    .head(10)
+)
+print("\nTop 10 States by Sales:\n", state_summary)
+
+# 1️⃣4️⃣ Monthly Sales Trend
+monthly_summary = df.groupby("Month")["Sales"].sum().reset_index()
+print("\nMonthly Sales Summary:\n", monthly_summary)
+
+# 1️⃣5️⃣ Segment-wise Sales
+segment_summary = df.groupby("Segment")["Sales"].sum().reset_index()
+print("\nSegment-wise Sales:\n", segment_summary)
+
+# 1️⃣6️⃣ Top 10 Products by Sales
+top_products = (
+    df.groupby("Product Name")["Sales"]
+    .sum()
+    .reset_index()
+    .sort_values(by="Sales", ascending=False)
+    .head(10)
+)
+print("\nTop 10 Products by Sales:\n", top_products)
+
+# 1️⃣7️⃣ City-wise Top 10 Sales
+city_summary = (
+    df.groupby("City")["Sales"]
+    .sum()
+    .reset_index()
+    .sort_values(by="Sales", ascending=False)
+    .head(10)
+)
+print("\nTop 10 Cities by Sales:\n", city_summary)
