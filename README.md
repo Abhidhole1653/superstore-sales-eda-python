@@ -110,5 +110,5 @@ The dataset contains retail transaction records with the following important fie
 
 ---
 👤 Author
-Abhishek Dhole
-Aspiring Data Analyst | Python | SQL | Power BI
+ Abhishek Dhole
+ Aspiring Data Analyst | Python | SQL | Power BI
